@@ -1,0 +1,136 @@
+<h1>Ajout de tickets</h1>
+
+
+
+<div class="container">
+
+  <p>
+    Vous pouvez ajouter un ou plusieurs tickets du meme type, à condition de renseigner le nom et prénom des beneficiaires pour
+    chacun des tickets commandés.
+  </p>
+  <p>
+    Si vous devez commander plusieurs types de tickets, merci de faire plusieurs ajouts.
+  </p>
+  <hr>
+
+  <p class="p-form">
+    tarif : {{ticket.type ? ticket.tarif * ticket.nombre / 2 : ticket.tarif * ticket.nombre}} €.
+
+  </p>
+
+  <mat-form-field color="primary">
+
+    <mat-select placeholder="Type de billet" [(ngModel)]="ticket.tarif">
+
+      <mat-option value="16">Plein tarif</mat-option>
+      <mat-option value="10">Tarif réduit</mat-option>
+      <mat-option value="8">- de 12 ans</mat-option>
+      <mat-option value="12">+ de 60 ans</mat-option>
+    </mat-select>
+
+    <mat-hint align="end"></mat-hint>
+
+  </mat-form-field>
+
+
+
+
+  <p class="p-form">Nombre de tickets pour ce tarif : {{ticket.nombre}}
+  </p>
+
+
+  <div class="slider">
+    <mat-icon class="icon-left" (click)="downNombreTicket()">
+      remove_circle_outline
+    </mat-icon>
+
+    <mat-slider color="primary" thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="30" [(ngModel)]="ticket.nombre"></mat-slider>
+
+    <mat-icon class="icon-right" (click)="upNombreTickets()">
+      add_circle_outline
+    </mat-icon>
+
+
+  </div>
+
+
+  <p class="p-form">
+    {{nombreNoms? nombreNoms : 0}} {{nombreNoms >1? "noms" : "nom"}} sur {{ticket.nombre}} {{ticket.nombre >1? "demandés" :
+    "demandé"}}
+
+  </p>
+
+  <p class="p-form">
+    Séparer les noms par un saut de ligne
+    <span>
+      exemple : Dupont Jean, Dubois Louis, Chirac Jacques
+
+    </span>
+  </p>
+
+
+
+
+
+  <mat-form-field hintLabel="Max {{70*ticket.nombre}} characters">
+
+
+
+    <textarea matInput #input maxlength="{{70*ticket.nombre}}" placeholder="Noms prénons" rows={{ticket.nombre}} [(ngModel)]="ticket.nom"
+      (ngModelChange)="checkNames()"></textarea>
+
+
+
+
+
+
+
+
+    <mat-hint align="end">{{input.value?.length || 0}}/{{70*ticket.nombre}}</mat-hint>
+
+  </mat-form-field>
+
+
+  <mat-form-field color="primary">
+
+    <mat-label>Choisir la date</mat-label>
+    <input [(ngModel)]="ticket.date" matInput [min]="minDate" [matDatepicker]="picker" (click)="picker.open()" (dateChange)='comparerDates()'>
+
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+
+  </mat-form-field>
+
+
+  <div class="checkbox">
+
+    <div *ngIf=halfDay>
+      <mat-checkbox color="primary" disabled="disabled" [(ngModel)]="ticket.type">
+
+        Demi journée
+      </mat-checkbox>
+
+    </div>
+
+    <div *ngIf=!halfDay>
+      <mat-checkbox color="primary" [(ngModel)]="ticket.type">
+
+        Demi journée
+      </mat-checkbox>
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <button mat-raised-button color="primary" (click)='consolelog()'>Ajouter au panier</button>
+
+
+
+
+</div>

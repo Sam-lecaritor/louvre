@@ -1,0 +1,85 @@
+@import "../../scss/var";
+h1 {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: $text-backgroung;
+  width: 80%;
+  max-width: 500px;
+  margin: 20px;
+  margin-bottom: 60px;
+  padding: 20px;
+  padding-left: 0px;
+  color: $font-color;
+}
+
+.container>* {
+  margin-left: 20px;
+}
+
+mat-form-field.mat-form-field {
+  //font-size: 16px;
+  padding-left: 5px;
+  margin-bottom: 8px;
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, .87);
+}
+
+.checkbox,
+.slider,
+.p-form {
+  padding-left: 5px;
+  padding-top: 5px;
+  margin-bottom: 8px;
+  height: 50px;
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.575);
+}
+
+.slider {
+  text-align: center;
+}
+
+.p-form {
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.1em;
+  font-weight: bolder;
+  margin-bottom: -8px;
+}
+
+.p-form>span {
+  display: inline-flex;
+  font-size: 0.7em;
+  color: rgba(0, 0, 0, 0.582);
+  min-height: 40px;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.icon-left {
+  margin-right: 20px;
+}
+
+.icon-right {
+  margin-left: 20px;
+}
+
+@media (max-width:340px) {
+  .p-form {
+    font-size: 1em;
+    font-weight: bolder;
+    margin-bottom: -8px;
+  }
+  .p-form>span {
+    display: inline-flex;
+    font-size: 0.6em;
+    color: rgba(0, 0, 0, 0.582);
+    word-wrap: break-word;
+    overflow: hidden;
+
+  }
+}

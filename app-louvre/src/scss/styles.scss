@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "var.scss";
+body {
+
+  background-color: rgb(0, 0, 0);
+  background-image: url("../assets/img/louvre_nuit.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+  min-height: 900px;
+  color: $font-color;
+  text-decoration: aqua;
+}
